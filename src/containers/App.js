@@ -14,10 +14,8 @@ class App extends Component {
 	state = {
 		globalSummary: null,
 		dailySummary: null,
-		dailySummaryLoading: false,
 		dailySummaryError: null,
-		isLoading: false,
-		selectedCountry: {},
+		selectedCountry: null,
 		allCountries: null,
 		allCountriesError: null,
 		loadingCountries: false,

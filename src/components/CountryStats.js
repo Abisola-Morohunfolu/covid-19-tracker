@@ -11,6 +11,32 @@ const CountryStats = props => {
 		);
 	}
 
+	if (props.country === null) {
+		return (
+			<Box borderBottom="1px solid gray">
+				<Flex justify="space-between" alignItems="center">
+					<Heading
+						as="h4"
+						textAlign={['center', 'center', 'left']}
+						px="4"
+						mt="3"
+						fontSize={['16px', '24px', '32px']}
+					>
+						{props.country !== null ? props.country.name : 'Country'} Summary
+					</Heading>
+					<SelectCountry
+						countries={props.allCountries}
+						select={props.selectCountry}
+						value={props.country !== null ? props.country.name : 'US'}
+					/>
+				</Flex>
+				<Text textAlign="center" p="4" color="red" fontWeight="bold">
+					No Reported case!!
+				</Text>
+			</Box>
+		);
+	}
+
 	return (
 		<Box borderBottom="1px solid gray">
 			<Flex justify="space-between" alignItems="center">
@@ -29,12 +55,8 @@ const CountryStats = props => {
 					value={props.country !== null ? props.country.name : 'US'}
 				/>
 			</Flex>
-			{props.error && (
-				<Text textAlign="center" p="4" color="red" fontWeight="bold">
-					Country Data not found!!! Select Another Country
-				</Text>
-			)}
-			{props.country.data && (
+
+			{props.country.data !== undefined || props.country !== null ? (
 				<Flex
 					justifyContent="space-around"
 					p="5"
@@ -78,7 +100,7 @@ const CountryStats = props => {
 						<Text>Recovered</Text>
 					</Box>
 				</Flex>
-			)}
+			) : null}
 		</Box>
 	);
 };
