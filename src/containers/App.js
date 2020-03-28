@@ -116,10 +116,20 @@ class App extends Component {
 			});
 	};
 
+	//fetch graph
+	fetchGraph = async () => {
+		fetch('https://cors-anywhere.herokuapp.com/https://covid19.mathdro.id/api/og').then(
+			response => {
+				console.log(response);
+			}
+		);
+	};
+
 	//fetchSelectedCountry
 	fetchSelectedCountry = async country => {
 		fetch(`https://covid19.mathdro.id/api/countries/${country}`)
 			.then(response => {
+				console.log(response);
 				if (response.ok) {
 					this.setState({
 						...this.state,
@@ -157,6 +167,7 @@ class App extends Component {
 		this.fetchDailySummary();
 		this.fetchCountries();
 		this.fetchSelectedCountry('US');
+		this.fetchGraph();
 	}
 
 	render() {

@@ -44,22 +44,6 @@ const dailySummary = props => {
 						Yesterday: {prevDay.deltaConfirmed} Confirmed Cases
 					</Text>
 				</Box>
-				<Box
-					border="1px solid teal"
-					textAlign="center"
-					borderRadius="3px"
-					boxShadow="0 5px 15px rgba(0, 0, 0, 0.411)"
-					p={10}
-					m={2}
-					w={['90vw', '80vw', '1fr']}
-				>
-					<Heading as="h5">{currentDay.deltaRecovered}</Heading>
-					<Text></Text>
-					<Text>Yesterday</Text>
-					<Text fontSize="12px" color="green.400">
-						Yesterday: {prevDay.deltaRecovered} Recovered
-					</Text>
-				</Box>
 			</Flex>
 		</Box>
 	);

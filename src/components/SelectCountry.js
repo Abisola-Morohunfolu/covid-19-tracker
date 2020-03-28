@@ -18,10 +18,10 @@ const selectCountry = props => {
 				props.select(event.target.value);
 			}}
 		>
-			{Object.keys(props.countries).map(countryKey => {
+			{props.countries.map(country => {
 				return (
-					<option value={countryKey} key={countryKey}>
-						{countryKey}
+					<option value={country.name} key={country.name}>
+						{country.name}
 					</option>
 				);
 			})}
