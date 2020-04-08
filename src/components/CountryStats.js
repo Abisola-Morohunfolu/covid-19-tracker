@@ -2,7 +2,11 @@ import React from 'react';
 import { Flex, Box, Heading, Text, Spinner } from '@chakra-ui/core';
 import SelectCountry from './SelectCountry';
 
-const CountryStats = props => {
+const formatString = (numb) => {
+	return numb.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+};
+
+const CountryStats = (props) => {
 	if (props.allCountries === null || props.loading) {
 		return (
 			<Flex justify="center" p={3}>
@@ -72,7 +76,7 @@ const CountryStats = props => {
 						m={2}
 						w={['90vw', '80vw', '1fr']}
 					>
-						<Heading as="h5">{props.country.data.confirmed.value}</Heading>
+						<Heading as="h5">{formatString(props.country.data.confirmed.value)}</Heading>
 						<Text>Cases</Text>
 					</Box>
 					<Box
@@ -84,7 +88,7 @@ const CountryStats = props => {
 						m={2}
 						w={['90vw', '80vw', '1fr']}
 					>
-						<Heading as="h5">{props.country.data.deaths.value}</Heading>
+						<Heading as="h5">{formatString(props.country.data.deaths.value)}</Heading>
 						<Text>Deaths</Text>
 					</Box>
 					<Box
@@ -96,7 +100,7 @@ const CountryStats = props => {
 						m={2}
 						w={['90vw', '80vw', '1fr']}
 					>
-						<Heading as="h5">{props.country.data.recovered.value}</Heading>
+						<Heading as="h5">{formatString(props.country.data.recovered.value)}</Heading>
 						<Text>Recovered</Text>
 					</Box>
 				</Flex>

@@ -1,7 +1,11 @@
 import React from 'react';
 import { Flex, Box, Heading, Text, Spinner } from '@chakra-ui/core';
 
-const dailySummary = props => {
+const formatString = (numb) => {
+	return numb.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+};
+
+const dailySummary = (props) => {
 	if (props.dailySummary === null) {
 		return (
 			<Flex justify="center" p={3}>
@@ -38,10 +42,10 @@ const dailySummary = props => {
 					m={2}
 					w={['90vw', '80vw', '1fr']}
 				>
-					<Heading as="h5">{currentDay.deltaConfirmed}</Heading>
+					<Heading as="h5">{formatString(currentDay.deltaConfirmed)}</Heading>
 					<Text>Cases</Text>
 					<Text fontSize="12px" color="red.400">
-						Yesterday: {prevDay.deltaConfirmed} Confirmed Cases
+						Yesterday: {formatString(prevDay.deltaConfirmed)} Confirmed Cases
 					</Text>
 				</Box>
 			</Flex>

@@ -7,7 +7,7 @@ const attribution = () => {
 			<Text>
 				Data API provided by{' '}
 				<Link href="https://github.com/mathdroid/covid-19-api" isExternal fontWeight="bold">
-					Matt Driod
+					Math Driod
 				</Link>
 			</Text>
 			<Text as="code" color="teal.400">

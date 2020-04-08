@@ -1,7 +1,11 @@
 import React from 'react';
 import { Flex, Box, Heading, Text, Spinner } from '@chakra-ui/core';
 
-const Summary = props => {
+const formatString = (numb) => {
+	return numb.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+};
+
+const Summary = (props) => {
 	if (props.summary === null) {
 		return (
 			<Flex justify="center" p={3}>
@@ -39,7 +43,7 @@ const Summary = props => {
 					m={2}
 					w={['90vw', '80vw', '1fr']}
 				>
-					<Heading as="h5">{confirmed}</Heading>
+					<Heading as="h5">{formatString(confirmed)}</Heading>
 					<Text>Cases</Text>
 				</Box>
 				<Box
@@ -51,7 +55,7 @@ const Summary = props => {
 					m={2}
 					w={['90vw', '80vw', '1fr']}
 				>
-					<Heading as="h5">{deaths}</Heading>
+					<Heading as="h5">{formatString(deaths)}</Heading>
 					<Text>Deaths</Text>
 					<Text fontSize="12px" color="red.400">
 						{((deaths / confirmed) * 100).toFixed(2)}% fatality rate
@@ -66,7 +70,7 @@ const Summary = props => {
 					m={2}
 					w={['90vw', '80vw', '1fr']}
 				>
-					<Heading as="h5">{recovered}</Heading>
+					<Heading as="h5">{formatString(recovered)}</Heading>
 					<Text>Recovered</Text>
 					<Text fontSize="12px" color="green.400">
 						{((recovered / confirmed) * 100).toFixed(2)}% recovery rate
